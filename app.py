@@ -1,3 +1,7 @@
+
+"""This program does not accept actual audio file in the form of formdata, it just emulates its CRUD operations on the server"""
+
+
 from flask import Flask, app
 from dotenv import load_dotenv
 from flask_mongoengine import MongoEngine
@@ -15,9 +19,10 @@ default_config = {
     }
 }
 
-"""This program does not accept actual audio file in the form of formdata, it just emulates its CRUD operations on the server"""
 
 
+
+""" Initializing the flask app with configurations and connection to the database"""
 def main_flask_app(config: dict = None) -> app.Flask:
 
     flask_app = Flask(__name__)
@@ -32,7 +37,6 @@ def main_flask_app(config: dict = None) -> app.Flask:
     
     create_routes(api=api)
 
-    
 
     return flask_app
 
