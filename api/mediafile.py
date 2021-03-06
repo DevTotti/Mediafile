@@ -77,6 +77,7 @@ class MediaFileAPI(Resource):
 
 
 
+
 """This class handles the get, update and delete of media file"""
 class MediaFilesAPI(Resource):
     def __init__(self):

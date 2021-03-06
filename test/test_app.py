@@ -23,20 +23,32 @@ def test_create_success(app, client):
     assert response.status_code == 200
 
 
-def test_get_success(app, client):
+
+
+def test_get_one_success(app, client):
     audioFileType = 'song'
-    audioFileID = "60432d11218002ba3785490b"
+    audioFileID = "60433070562ac133f1fb5159"
     response = client.get('/media/{}/{}'.format(audioFileType, audioFileID))
     assert response.content_type == mimetype
     assert response.status_code == 200
+
+
+
+def test_get_all_success(app, client):
+    audioFileType = 'song'
+    response = client.get('/media/{}/'.format(audioFileType))
+    assert response.content_type == mimetype
+    assert response.status_code == 200
+
+
 
 
 def test_put_success(app, client):
     data = {
         "audioFileType":"song",
         "audioFileMetadata":{
-            "name":"Fast Lane",
-            "duration":240
+            "name":"Self Made",
+            "duration":248
         }
     }
 
@@ -44,16 +56,18 @@ def test_put_success(app, client):
     audioFileType = data['audioFileType']
 
 
-    audioFileID = "60432d11218002ba3785490b"
+    audioFileID = "60433070562ac133f1fb5159"
 
-    response = client.put('/media/{}/{}'.format(audioFileType, audioFileID), data = json.dumps(audioFileMetadata), headers=headers)
+    response = client.put('/media/{}/{}'.format(audioFileType, audioFileID), data = json.dumps(data), headers=headers)
     assert response.content_type == mimetype
     assert response.status_code == 200
 
 
+
+
 def test_delete_success(app, client):
     audioFileType = 'song'
-    audioFileID = "60432d11218002ba3785490b"
+    audioFileID = "6043b809d97d22589ceab834"
 
     response = client.delete('/media/{}/{}'.format(audioFileType, audioFileID))
     assert response.content_type == mimetype
