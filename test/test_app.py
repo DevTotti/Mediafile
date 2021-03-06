@@ -20,8 +20,9 @@ def test_create_success(app, client):
 
     url = '/'
 
-    response = client.create_routes.post(url, data=json.dumps(data), headers=headers)
+    response = client.post(url, data=json.dumps(data), headers=headers)
     assert response.status_code == 200
+
 
 def test_get_success(app, client):
     audioFileType = 'song'
@@ -53,8 +54,8 @@ def test_put_success(app, client):
 
 
 def test_delete_success(app, client):
+    audioFileType = 'song'
     audioFileID = "60432d11218002ba3785490b"
-    audioFileMetadata = data['audioFileMetadata']
 
     response = client.delete('/media/{}/{}'.format(audioFileType, audioFileID))
     assert response.content_type == mimetype

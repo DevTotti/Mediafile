@@ -10,5 +10,5 @@ def app():
 
 @pytest.fixture
 def client(app):
-    app = app.config["TESTING"]
+    app.config["TESTING"] = True
     return app.test_client()

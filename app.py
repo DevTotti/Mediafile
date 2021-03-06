@@ -20,12 +20,12 @@ default_config = {
 }
 
 
-flask_app = Flask(__name__)
+app = Flask(__name__)
 
 
-flask_app.config.update(default_config)
+app.config.update(default_config)
 
-mongo = MongoEngine(flask_app)
+mongo = MongoEngine(app)
 
 
 
@@ -34,17 +34,17 @@ mongo = MongoEngine(flask_app)
 """ Initializing the flask app with configurations and connection to the database"""
 def main_flask_app():
 
-    api = Api(app=flask_app)
+    api = Api(app=app)
     
     create_routes(api=api)
 
 
-    return flask_app
+    return app
 
 
 if __name__ == '__main__':
     #to change port add port=PORT_NUMBER after debug=True
     app = main_flask_app()
-    app.run()
+    app.run(debug=True)
     
 
