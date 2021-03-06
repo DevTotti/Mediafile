@@ -40,6 +40,7 @@ def main_flask_app(config: dict = None) -> app.Flask:
 
     return flask_app
 
+
 if __name__ == '__main__':
     app = main_flask_app()
     app.run(debug=True)

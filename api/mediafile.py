@@ -1,3 +1,5 @@
+"""This module handles the Resources for the routes"""
+
 from flask import Response, request, jsonify
 from flask_restful import Resource
 from models.media import Song, Podcast, Audiobook
