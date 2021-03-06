@@ -2,7 +2,7 @@
 """This program does not accept actual audio file in the form of formdata, it just emulates its CRUD operations on the server"""
 
 
-from flask import Flask, app
+from flask import Flask
 from dotenv import load_dotenv
 from flask_mongoengine import MongoEngine
 import os
@@ -36,8 +36,7 @@ def main_flask_app():
 
     api = Api(app=app)
     
-    create_routes(api=api)
-
+    api = create_routes(api=api)
 
     return app
 

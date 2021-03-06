@@ -46,7 +46,6 @@ class MediaFileAPI(Resource):
                     return Response(status=500)
 
                 
-        
         elif audioFileType == 'podcast':
             try:
                 post_data = db(**audioFileMetadata).save()

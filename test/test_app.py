@@ -1,14 +1,14 @@
 import json
 
+
 mimetype = 'application/json'
 headers = {
     'Content-Type': mimetype,
     'Accept': mimetype
-}
+    }
 
 
 def test_create_success(app, client):
-
 
     data = {
         "audioFileType":"song",
@@ -18,9 +18,8 @@ def test_create_success(app, client):
         }
     }
 
-    url = '/'
 
-    response = client.post(url, data=json.dumps(data), headers=headers)
+    response = client.post('/', data=json.dumps(data), headers=headers)
     assert response.status_code == 200
 
 
@@ -30,7 +29,6 @@ def test_get_success(app, client):
     response = client.get('/media/{}/{}'.format(audioFileType, audioFileID))
     assert response.content_type == mimetype
     assert response.status_code == 200
-
 
 
 def test_put_success(app, client):

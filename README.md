@@ -55,13 +55,13 @@ python app.py
 
 
 #Routes
-NAME     			        | END POINT                             |  PARAMS / BODY DATA
--------------------------   | -------------                         | ---------------
-Create Audio file [POST]    | /                                     |{`audioFileType`:str}, {`audioFileMetadata`:dict{`name`:str, `duration`:int}}
-Get existing audiofile [GET]| /media/<audioFileType>/               |<audioFileType>/
-Get existing audiofile [GET]| /media/<audioFileType>/<audioFileID>  |<audioFileType>/<audioFileID>
-Delete existing audiofile [GET]| /media/<audioFileType>/<audioFileID>  |<audioFileType>/<audioFileID>
-Update Audio file [PUT]    | /                                     |{`audioFileType`:str}, {`audioFileMetadata`:dict{`name`:str, `duration`:int}}
+NAME     			                | END POINT                             |  PARAMS / BODY DATA
+------------------------------------| --------------------------------------| ---------------
+Create Audio file [POST]            | /                                     |{`audioFileType`:str}, {`audioFileMetadata`:dict{`name`:str, `duration`:int}}
+Get existing audiofile [GET]        | /media/<audioFileType>/               |<audioFileType>/
+Get existing audiofile [GET]        | /media/<audioFileType>/<audioFileID>  |<audioFileType>/<audioFileID>
+Delete existing audiofile [DELETE]  | /media/<audioFileType>/<audioFileID>  |<audioFileType>/<audioFileID>
+Update Audio file [PUT]             | /                                     |{`audioFileType`:str}, {`audioFileMetadata`:dict{`name`:str, `duration`:int}}
 
 
 I hope you found it easy

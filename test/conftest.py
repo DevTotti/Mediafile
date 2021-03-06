@@ -1,4 +1,3 @@
-
 import pytest
 
 from app import app as main_app
@@ -11,4 +10,5 @@ def app():
 @pytest.fixture
 def client(app):
     app.config["TESTING"] = True
-    return app.test_client()
+    client = app.test_client()
+    return client
