@@ -2,10 +2,11 @@
 
 from flask import Response, request, jsonify
 from flask_restful import Resource
-from models.media import Song, Podcast, Audiobook
-from api.errors import invalid_request
+from models.media import Song, Podcast, Audiobook       #models created in media.py
+from api.errors import invalid_request                  #handling 400 error
 
 
+"""This class creates a dictionary to map the audiFileType with their respective database model"""
 class MediaTypeDatabase():
 
     def __init__(self):
@@ -21,7 +22,7 @@ class MediaTypeDatabase():
 
 
 
-
+"""This class handles the POST request from the routes"""
 class MediaFileAPI(Resource):
 
     def __init__(self):
@@ -38,8 +39,13 @@ class MediaFileAPI(Resource):
                 result = {'id', str(post_data.id)}
                 return Response(status=200)
             
-            except:
-                return Response(status=500)
+            except Exception as error:
+                if error.__class__.__name__ == 'ValidationError':
+                    return invalid_request()
+                else:
+                    return Response(status=500)
+
+                
         
         elif audioFileType == 'podcast':
             try:
@@ -47,8 +53,11 @@ class MediaFileAPI(Resource):
                 result = {'id', str(post_data.id)}
                 return Response(status=200)
 
-            except:
-                return Response(status=500)
+            except Exception as error:
+                if error.__class__.__name__ == 'ValidationError':
+                    return invalid_request()
+                else:
+                    return Response(status=500)
 
         elif audioFileType == 'audiobook':
             try:
@@ -56,8 +65,12 @@ class MediaFileAPI(Resource):
                 result = {'id', str(post_data.id)}
                 return Response(status=200)
 
-            except:
-                return Response(status=500)
+                
+            except Exception as error:
+                if error.__class__.__name__ == 'ValidationError':
+                    return invalid_request()
+                else:
+                    return Response(status=500)
 
         else:
             return invalid_request()
