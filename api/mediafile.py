@@ -22,7 +22,7 @@ class MediaTypeDatabase():
 
 
 
-"""This class handles the POST request from the routes"""
+"""This class handles the create of media file"""
 class MediaFileAPI(Resource):
 
     def __init__(self):
@@ -65,7 +65,7 @@ class MediaFileAPI(Resource):
                 result = {'id', str(post_data.id)}
                 return Response(status=200)
 
-                
+
             except Exception as error:
                 if error.__class__.__name__ == 'ValidationError':
                     return invalid_request()
@@ -78,7 +78,7 @@ class MediaFileAPI(Resource):
 
 
 
-
+"""This class handles the get, update and delete of media file"""
 class MediaFilesAPI(Resource):
     def __init__(self):
         self.database = MediaTypeDatabase().database()
@@ -111,8 +111,11 @@ class MediaFilesAPI(Resource):
             response.status_code = 200
             return response
         
-        except:
-            return Response(status=400)
+        except Exception as error:
+            if error.__class__.__name__ == 'ValidationError':
+                return invalid_request()
+            else:
+                return Response(status=500)
 
 
 
