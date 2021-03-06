@@ -43,6 +43,7 @@ def main_flask_app():
 
 
 if __name__ == '__main__':
+    #to change port add port=PORT_NUMBER after debug=True
     app = main_flask_app()
     app.run()
     
