@@ -1,3 +1,5 @@
+"""Handling 400 error"""
+
 from flask import Response, jsonify
 
 def invalid_request() -> Response :

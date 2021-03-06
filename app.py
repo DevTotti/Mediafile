@@ -20,18 +20,19 @@ default_config = {
 }
 
 
+flask_app = Flask(__name__)
+
+
+flask_app.config.update(default_config)
+
+mongo = MongoEngine(flask_app)
+
+
+
 
 
 """ Initializing the flask app with configurations and connection to the database"""
-def main_flask_app(config: dict = None) -> app.Flask:
-
-    flask_app = Flask(__name__)
-
-    config = default_config if config is None else config
-
-    flask_app.config.update(config)
-
-    mongo = MongoEngine(flask_app)
+def main_flask_app():
 
     api = Api(app=flask_app)
     
@@ -43,6 +44,6 @@ def main_flask_app(config: dict = None) -> app.Flask:
 
 if __name__ == '__main__':
     app = main_flask_app()
-    app.run(debug=True)
+    app.run()
     
 

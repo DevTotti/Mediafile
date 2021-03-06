@@ -3,3 +3,4 @@ Flask==1.1.2
 Flask-RESTful==0.3.8
 python-dotenv==0.15.0
 mongoengine==0.23.0
+pytest==6.2.2

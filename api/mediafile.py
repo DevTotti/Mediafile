@@ -6,7 +6,7 @@ from models.media import Song, Podcast, Audiobook       #models created in media
 from api.errors import invalid_request                  #handling 400 error
 
 
-"""This class creates a dictionary to map the audiFileType with their respective database model"""
+"""This class creates a dictionary to map the oaudiFileType with their respective database model"""
 class MediaTypeDatabase():
 
     def __init__(self):
@@ -84,6 +84,7 @@ class MediaFilesAPI(Resource):
         self.database = MediaTypeDatabase().database()
 
 
+
     def get(self, audioFileType: str = None, audioFileID: str = None) -> Response:
         db = self.database[audioFileType]
         
@@ -102,6 +103,7 @@ class MediaFilesAPI(Resource):
             return response
 
     
+
     def put(self, audioFileType: str , audioFileID: str) -> Response:
         db = self.database[audioFileType]
         audioFileMetadata = request.get_json()['audioFileMetadata']
