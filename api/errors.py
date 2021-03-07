@@ -4,7 +4,7 @@ from flask import Response, jsonify
 
 def invalid_request() -> Response :
     output = {"error":
-                {'message':'40 error: Invalid Request'}
+                {'message':'400 error: Invalid Request'}
                 }
 
     response = jsonify({'result': output})

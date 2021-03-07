@@ -85,22 +85,28 @@ class MediaFilesAPI(Resource):
 
 
 
-    def get(self, audioFileType: str = None, audioFileID: str = None) -> Response:
-        db = self.database[audioFileType]
-        
-        if audioFileID is not None:
+    def get(self, audioFileType: str, audioFileID: str = None) -> Response:
+
+
+        try:
+            db = self.database[audioFileType]
             
-            data = db.objects.get(id=audioFileID)
-            response = jsonify({'data': data})
-            response.status_code = 200
-            return response
+            if audioFileID is not None:
+                
+                data = db.objects.get(id=audioFileID)
+                response = jsonify({'data': data})
+                response.status_code = 200
+                return response
 
-        else:
+            else:
 
-            data = db.objects()
-            response = jsonify({'data': data})
-            response.status_code = 200
-            return response
+                data = db.objects()
+                response = jsonify({'data': data})
+                response.status_code = 200
+                return response
+
+        except:
+            return Response(status=500)
 
     
 
@@ -131,5 +137,5 @@ class MediaFilesAPI(Resource):
             return response
         
         except:
-            return Response(status=400)
+            return invalid_request()
 
